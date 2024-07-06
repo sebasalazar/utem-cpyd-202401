@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-INSERT INTO credentials (ws_tkn, ws_key) VALUES ('abc123','xyz987');
+INSERT INTO credentials (code, ws_tkn, ws_key) VALUES ('92e99dfd-1b08-44c1-b842-ddd80fd44cdd','abc123','xyz987');
 
 
 INSERT INTO faculties (code, name, address, latitude, longitude) VALUES ('FAE','Facultad de Administración y Economía','Dr. Hernán Alessandri 644, 7500998 Santiago, Providencia, Región Metropolitana','-33.43459','-70.6261097');

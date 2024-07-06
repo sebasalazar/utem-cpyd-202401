@@ -3,13 +3,15 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS credentials CASCADE;
 CREATE TABLE credentials (
     pk bigserial NOT NULL, -- bigint AUTOINCREMENT (secuencia)
+    code varchar(255) NOT NULL, -- Código UNICO de la credencial
     ws_tkn varchar(255) NOT NULL, -- nombre de usuario (token de webservice)
     ws_key varchar(255) NOT NULL, -- contraseña (llave del webservice)
     created timestamptz NOT NULL DEFAULT NOW(), -- Fecha de creación del registro
     updated timestamptz NOT NULL DEFAULT NOW(), -- Fecha de última actualización del registro
-    UNIQUE (ws_tkn),
+    UNIQUE (ws_tkn, ws_key),
     PRIMARY KEY (pk)
 );
+CREATE UNIQUE INDEX cred_code_uidx ON credentials(UPPER(code));
 
 
 DROP TABLE IF EXISTS entrances CASCADE;
